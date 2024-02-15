@@ -7,7 +7,7 @@ import base64
 import cv2
 
 import re
-# myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='admin123',database='bizcardx')
+# myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='yourpwd',database='bizcardx')
 # cur = myconnection.cursor()
 
 # table_create_sql = '''CREATE TABLE IF NOT EXISTS mytable (ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -182,7 +182,7 @@ def upload_database(image):
     with open(image, 'rb') as file:
         blobimg = file.read()
     #  
-    myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='admin123',database='bizcard')
+    myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='yourpwd',database='bizcard')
     cur = myconnection.cursor()
     # -----------------------------------------inserting data into table---------------------------------------------------------------------
     image_insert = '''INSERT INTO bizcardx (Name, Designation, Company_name,
@@ -196,7 +196,7 @@ def upload_database(image):
     cur.execute(image_insert,values)
     myconnection.commit()
 def show_database():
-        myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='admin123',database='bizcard')
+        myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='your pwd',database='bizcard')
         cur = myconnection.cursor()
         new_df = pd.read_sql("SELECT * FROM bizcardx", con=myconnection)
         return new_df
@@ -264,7 +264,7 @@ if selected == "Modify":
 
     if select == "ALTER":
             st.markdown(":blue[Alter the data here]")
-            myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='admin123',database='bizcard')
+            myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='yourpwd',database='bizcard')
             cur = myconnection.cursor()
             cur.execute("SELECT name FROM bizcardx")
             result = cur.fetchall()
@@ -321,7 +321,7 @@ if selected == "Modify":
     if select == "DELETE":
             st.subheader(":blue[Delete the data]")
         # try:
-            myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='admin123',database='bizcard')
+            myconnection = pymysql.connect(host='127.0.0.1',user='root',passwd='yourpwd',database='bizcard')
             cur = myconnection.cursor()
             cur.execute("SELECT name FROM bizcardx")
             result = cur.fetchall()
